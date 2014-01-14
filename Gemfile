@@ -12,6 +12,7 @@ gem 'rspec-rails'
 gem 'capybara'
 gem 'pry'
 gem 'pry-rails'
+gem 'devise'
 
 # Gems used only for assets and not required
 # in production environments by default.
