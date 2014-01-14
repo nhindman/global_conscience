@@ -13,13 +13,13 @@ describe "when i visit the root path" do
   describe "it should allow a country to be selected" do
     before do
       visit '/'
-      # puts page.body
-      select(@country.name, :from => 'countries')
-      find_button("search").click
+      puts page.body
+      select(@country.name, :from => 'country')
+      click_on('search')
     end
 
     it "should display information from the state dept and from twitter" do
-      visit countries_path
+      visit '/countries/display'
       page.should have_content(@tweet)
       page.should have_content(@govt_info)
     end

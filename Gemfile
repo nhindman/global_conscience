@@ -13,6 +13,10 @@ gem 'capybara'
 gem 'pry'
 gem 'pry-rails'
 gem 'devise'
+gem 'twitter'
+
+require 'twitter/geo_results'
+require 'twitter/place'
 
 # Gems used only for assets and not required
 # in production environments by default.

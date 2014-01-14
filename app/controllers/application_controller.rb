@@ -4,7 +4,7 @@ class ApplicationController < ActionController::Base
   before_filter :set_countries
 
   def set_countries
-    @countries = Country.all
+    @country = Country.all
   end
 
 

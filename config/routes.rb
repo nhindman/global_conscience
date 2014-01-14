@@ -1,8 +1,10 @@
 GlobalConscience::Application.routes.draw do
 
-  resources :home
-
   devise_for :users
+
+  get 'home/index' => 'home#index'
+
+  get 'country/display/' => 'country#display'
 
   root :to => "home#index"
 

@@ -6,17 +6,19 @@
   <%= javascript_include_tag "application" %>
   <%= csrf_meta_tags %>
 
-  <p class="notice"><%= notice %></p>
-  <p class="alert"><%= alert %></p>
+
 </head>
 <body>
 
-<form action="/country/selection" method="POST" >
-  <select name='countries'>
-  <% @countries.each do |country| %>
-    <option value="<%= country.woeid %>"><%= country.name %></option>
+<p class="notice"><%= notice %></p>
+<p class="alert"><%= alert %></p>
+
+<form action="/country/display" method="get" >
+  <select name='country'>
+  <% @country.each do |country| %>
+    <option value="<%= country.id %>"><%= country.name %></option>
   <% end %>
-  </select>
+    </select>
   <button>search</button>
 </form>
 
