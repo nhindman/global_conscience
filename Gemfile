@@ -14,6 +14,8 @@ gem 'pry'
 gem 'pry-rails'
 gem 'devise'
 gem 'twitter'
+gem 'httparty'
+gem 'json'
 
 require 'twitter/geo_results'
 require 'twitter/place'

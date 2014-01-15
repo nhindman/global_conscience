@@ -4,8 +4,10 @@ class ApplicationController < ActionController::Base
   before_filter :set_countries
 
   def set_countries
-    @country = Country.all
+    @country = Country.order("name asc")
+    # @country = Country.all
   end
+
 
 
 end

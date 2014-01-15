@@ -13,10 +13,12 @@
 <p class="notice"><%= notice %></p>
 <p class="alert"><%= alert %></p>
 
+<%= @all_countries %>
+
 <form action="/country/display" method="get" >
   <select name='country'>
   <% @country.each do |country| %>
-    <option value="<%= country.id %>"><%= country.name %></option>
+    <option value="<%= country.woeid %>"><%= country.name %></option>
   <% end %>
     </select>
   <button>search</button>
