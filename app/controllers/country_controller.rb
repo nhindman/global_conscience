@@ -4,8 +4,8 @@ class CountryController < ApplicationController
     woeid = params[:country]
     woeid.to_i
     @country_choice = Country.find_by_woeid(woeid)
-
-    binding.pry
+    @state_dept = HTTParty.get("http://www.state.gov/api/v1?command=get_country_fact_sheets&fields=content_html&terms&terms=#{@country_choice.name}")
+    @travel_warning = HTTParty.get('http://travel.state.gov/_res/rss/TWs.xml')
 
     # @country_choice.name
 

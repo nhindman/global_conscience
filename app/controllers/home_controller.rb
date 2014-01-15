@@ -4,7 +4,7 @@ class HomeController < ApplicationController
     # tweet = Tweet.new
     # tweet.establish_connection.trends_place(1)
     @info = Info.all
-    @country = Country.all
+    # @country = Country.order("name asc")
   end
 
 end
