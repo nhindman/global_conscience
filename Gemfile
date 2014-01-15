@@ -15,8 +15,8 @@ gem 'twitter'
 gem 'httparty'
 gem 'json'
 
-require 'twitter/geo_results'
-require 'twitter/place'
+# require 'twitter/geo_results'
+# require 'twitter/place'
 
 # Gems used only for assets and not required
 # in production environments by default.
