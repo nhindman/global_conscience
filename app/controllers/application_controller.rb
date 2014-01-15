@@ -5,8 +5,8 @@ class ApplicationController < ActionController::Base
 
   def set_countries
     @country = Country.order("name asc")
-    # @country = Country.all
   end
+
 
 
 

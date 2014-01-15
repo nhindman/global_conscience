@@ -1,7 +1,9 @@
 class CreateInfos < ActiveRecord::Migration
   def change
     create_table :infos do |t|
-      t.string :body
+      t.text :body
+      t.string :country
+
 
       t.timestamps
     end

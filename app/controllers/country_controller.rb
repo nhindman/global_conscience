@@ -4,12 +4,16 @@ class CountryController < ApplicationController
     woeid = params[:country]
     woeid.to_i
     @country_choice = Country.find_by_woeid(woeid)
-    @state_dept = HTTParty.get("http://www.state.gov/api/v1?command=get_country_fact_sheets&fields=content_html&terms&terms=#{@country_choice.name}")
-    @travel_warning = HTTParty.get('http://travel.state.gov/_res/rss/TWs.xml')
+    country = @country_choice.name
+    warning = warning.find_by_country(country)
+    @warning_title = warning.title
+    @warning_body = warning.body
+    @warning_link = warning.link
+    
+    # @travel_warning = Info.find_by_name(@country_choice.name)
 
     # @country_choice.name
-
-    # get_country_fact_sheets(, id:Set, date:Date, terms:Set, bureau:Set)
+    
     # twitter = Tweet.new
     # @tweet = twitter.establish_connection.trends_place(woeid)
     

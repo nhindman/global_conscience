@@ -11,19 +11,18 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20140113230931) do
+ActiveRecord::Schema.define(:version => 20140115212211) do
 
   create_table "comments", :force => true do |t|
+    t.text     "body"
     t.integer  "country_id"
     t.integer  "user_id"
-    t.string   "body"
+    t.string   "title"
     t.datetime "created_at", :null => false
     t.datetime "updated_at", :null => false
   end
 
   create_table "countries", :force => true do |t|
-    t.integer  "tweet_id"
-    t.integer  "info_id"
     t.integer  "user_id"
     t.string   "name"
     t.integer  "woeid"
@@ -32,7 +31,8 @@ ActiveRecord::Schema.define(:version => 20140113230931) do
   end
 
   create_table "infos", :force => true do |t|
-    t.string   "body"
+    t.text     "body"
+    t.string   "country"
     t.datetime "created_at", :null => false
     t.datetime "updated_at", :null => false
   end
@@ -61,5 +61,14 @@ ActiveRecord::Schema.define(:version => 20140113230931) do
 
   add_index "users", ["email"], :name => "index_users_on_email", :unique => true
   add_index "users", ["reset_password_token"], :name => "index_users_on_reset_password_token", :unique => true
+
+  create_table "warnings", :force => true do |t|
+    t.string   "title"
+    t.text     "body"
+    t.string   "link"
+    t.string   "country"
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
+  end
 
 end
