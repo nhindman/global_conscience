@@ -1,20 +1,31 @@
-# This file should contain all the record creation needed to seed the database with its default values.
-# The data can then be loaded with the rake db:seed (or created alongside the db with db:setup).
-#
-# Examples:
-#
-#   cities = City.create([{ name: 'Chicago' }, { name: 'Copenhagen' }])
-#   Mayor.create(name: 'Emanuel', city: cities.first)
-
-Comment.create(body: "I used to be emperor!", country_id: 1, user_id: 1)
-Comment.create(body: "I squandered the resources of egypt", country_id: 2, user_id: 1)
-Info.create(body: "Its hard to even refer to Syria as a country anymore")
-Info.create(body: "Sisi is not a sissy. He's also the anti isis.")
-Tweet.create(body: "#isis")
-Tweet.create(body: "#dictatorships replace failed #democracies")
-User.create(email: "Roman.Emperor@postoffice.old")
+# =================
+# CREATES COUNTRIES
+# =================
 
 all_countries = HTTParty.get("http://where.yahooapis.com/v1/countries?appid=Q6S.eLHV34GwNc79pswEdclgszSHyCyV7u5nb4kCEkfySEnahkUqyCEN1W1o2LsXR40GWpY")
 all_countries["places"]["place"].each do |hash|
   Country.create(name: hash["name"], woeid: hash["woeid"])
 end
+
+
+# ==============
+# TRAVEL WARNING
+# ==============
+
+
+travel_warning = HTTParty.get('http://travel.state.gov/_res/rss/TWs.xml')
+travel_warning['rss']['channel']['item'].each do |hash|
+  country = hash["title"].split[0..-3].join(" ")
+  Warning.create(title: hash["title"], body: hash["description"], link: hash["link"], country: country)
+end
+
+# ============
+# COUNTRY INFO
+# ============
+
+all_countries["places"]["place"].each do |hash|
+  name = hash["name"].gsub(" ", "%20")
+  info = HTTParty.get("http://www.state.gov/api/v1?command=get_country_fact_sheets&fields=content_html&terms&terms=#{name}")
+  Info.create(body: info["country_fact_sheets"], country: hash["name"])
+end
+

@@ -1,7 +1,7 @@
 class Country < ActiveRecord::Base
-  attr_accessible :info_id, :name, :tweet_id, :user_id, :woeid
+  attr_accessible :user_id, :woeid, :name
 
-  belongs_to :user
-  belongs_to :tweet
+  belongs_to :warning
   belongs_to :info
+  belongs_to :user
 end
