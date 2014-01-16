@@ -1,10 +1,7 @@
 class HomeController < ApplicationController
 
   def index
-    # tweet = Tweet.new
-    # tweet.establish_connection.trends_place(1)
-    @info = Info.all
-    # @country = Country.order("name asc")
+    @warning = Warning.find_by_id(25).body
   end
 
 end
