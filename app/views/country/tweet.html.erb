@@ -1,7 +1,3 @@
-<!-- <p><%= @tweet %></p> -->
-<p><%= @warning_title %></p><br>
-<p><%= @warning_body %></p>
-
 <% @tweets.each do |tweet| %>
 <a href="<%= tweet[:url]%>"><%= tweet[:name] %></a><br>
 <% end %>

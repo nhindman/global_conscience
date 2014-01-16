@@ -20,6 +20,10 @@ Devise.setup do |config|
   # :mongoid (bson_ext recommended) by default. Other ORMs may be
   # available as additional gems.
   require 'devise/orm/active_record'
+  require "omniauth-facebook"
+
+  config.omniauth :facebook, "1448467985367824", "c2b421e77e5bf13cdb411c9d85d68dde"
+  
 
   # ==> Configuration for any authentication mechanism
   # Configure which keys are used when authenticating a user. The default is
@@ -251,9 +255,5 @@ Devise.setup do |config|
   # When using omniauth, Devise cannot automatically set Omniauth path,
   # so you need to do it manually. For the users scope, it would be:
   # config.omniauth_path_prefix = '/my_engine/users/auth'
-
-
-require "omniauth-facebook"
-  config.omniauth :facebook, "1448467985367824", "c2b421e77e5bf13cdb411c9d85d68dde"
 
 end

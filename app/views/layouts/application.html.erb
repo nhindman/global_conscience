@@ -14,13 +14,22 @@
 <p class="alert"><%= alert %></p>
 
 <form action="/country/display" method="get" >
-  <select name='country'>
-  <% @countries.each do |country| %>
+  <select>
+  <% @danger_countries.each do |country| %>
     <option value="<%= country.country %>"><%= country.country %></option>
   <% end %>
     </select>
   <button>search</button>
 </form>
+
+<form action="/country/tweets" method="get" >
+  <select>
+  <% @countries.each do |country| %>
+    <option value='<%= country.woeid %>'><%= country.name %></option>
+    <% end %>
+    </select>
+    <button>search</button>
+    </form>
 
 <%= yield %>
 
