@@ -8,11 +8,19 @@ class CountryController < ApplicationController
     @warning_link = warning.link
 
     location = Country.find_by_name(country)
-    @woeid = location.woeid
+    woeid = location.woeid
     
     twitter = Tweet.new
-    tweet_trends = twitter.establish_connection.trends_place(@woeid)
+    tweet_trends = twitter.establish_connection.trends_place(woeid)
     @tweets = tweet_trends.attrs[:trends]
   end
   
+  def tweets
+    woeid = params[:woeid]
+    twitter = Tweet.new
+    tweet_trends = twitter.establish_connection.trends_place(woeid)
+    @tweets = tweet_trends.attrs[:trends]
+  end
+
+
 end

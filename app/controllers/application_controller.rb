@@ -4,9 +4,9 @@ class ApplicationController < ActionController::Base
   before_filter :set_countries
 
   def set_countries
-    @countries = Warning.all
+    @danger_countries = Warning.order("country asc")
+    @countries = Country.order("name asc")
   end
-
 
 
 
