@@ -10,4 +10,6 @@ class Tweet < ActiveRecord::Base
     end
     return client
   end
+
+  
 end
