@@ -1,6 +1,6 @@
 GlobalConscience::Application.routes.draw do
 
-  devise_for :users
+  devise_for :users, :controllers => { :omniauth_callbacks => "users/omniauth_callbacks" }
 
   get 'home/index' => 'home#index'
 
@@ -9,5 +9,9 @@ GlobalConscience::Application.routes.draw do
   get 'country/tweet/' => 'country#tweet'
   
   root :to => "home#index"
+
+  devise_scope :user do
+    get 'sign_out', :to => 'devise/sessions#destroy', :as => :destroy_user_session
+  end
 
 end
