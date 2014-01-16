@@ -6,7 +6,7 @@ GlobalConscience::Application.routes.draw do
 
   get 'country/display/' => 'country#display'
 
-  get 'country/tweets/' => 'country#tweets'
+  get 'country/tweet/' => 'country#tweet'
   
   root :to => "home#index"
 

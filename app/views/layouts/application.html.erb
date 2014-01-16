@@ -16,7 +16,7 @@
 
 <h1>search tweets by trouble spots</h1>
 <form action="/country/display" method="get" >
-  <select>
+  <select name="country" class="submit">
   <% @danger_countries.each do |country| %>
     <option value="<%= country.country %>"><%= country.country %></option>
   <% end %>
@@ -25,11 +25,9 @@
 </form>
 
 <h1>search tweets by country</h1>
-<form action="/country/tweets" method="get" >
-  <select>
+<form action="/country/tweet" method="get" >
+  <select name="woeid" value="submit">
   <% @countries.each do |country| %>
-  <li><%= country.name %></li>
-  <li><%= country.woeid %></li>
     <option value='<%= country.woeid %>'><%= country.name %></option>
     <% end %>
   </select>

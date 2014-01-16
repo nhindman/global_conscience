@@ -14,8 +14,12 @@ gem 'devise'
 gem 'twitter'
 gem 'httparty'
 gem 'json'
+gem 'skeleton-rails'
 gem 'omniauth'
 gem 'omniauth-facebook'
+gem 'pry'
+gem 'pry-rails'
+gem 'geocoder'
 
 
 # require 'twitter/geo_results'

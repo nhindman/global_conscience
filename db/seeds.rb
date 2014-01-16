@@ -7,7 +7,6 @@ all_countries["places"]["place"].each do |hash|
   Country.create(name: hash["name"], woeid: hash["woeid"])
 end
 
-
 # ==============
 # TRAVEL WARNING
 # ==============
@@ -19,6 +18,9 @@ travel_warning['rss']['channel']['item'].each do |hash|
   tldr = hash["description"].split("<p>")[0..2].join(" ").gsub("</p>", " ").gsub("<br>", " ").gsub("&nbsp;", ".")
   Warning.create(title: hash["title"], body: tldr, link: hash["link"], country: country)
 end
+
+# global = Warning.find_by_id(25).country = "Global"
+# global.save
 
 # ============
 # COUNTRY INFO
