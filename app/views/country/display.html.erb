@@ -1,5 +1,8 @@
-<p><%= @country_choice.name %></p>
 <!-- <p><%= @tweet %></p> -->
-<p><%=  %></p>
-<br><br><br><br><br>
+<p><%= @warning_title %></p><br>
 <p><%= @warning_body %></p>
+<p><%= @woeid %></p>
+
+<% @tweets.each do |tweet| %>
+<a href="<%= tweet[:url]%>"><%= tweet[:name] %></a><br>
+<% end %>

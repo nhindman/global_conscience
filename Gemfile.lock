@@ -60,6 +60,7 @@ GEM
     execjs (2.0.2)
     faraday (0.8.9)
       multipart-post (~> 1.2.0)
+    hashie (2.0.5)
     hike (1.2.3)
     http (0.5.0)
       http_parser.rb
@@ -85,6 +86,9 @@ GEM
     multipart-post (1.2.0)
     nokogiri (1.6.1)
       mini_portile (~> 0.5.0)
+    omniauth (1.1.4)
+      hashie (>= 1.2, < 3)
+      rack
     orm_adapter (0.5.0)
     pg (0.17.1)
     polyglot (0.3.3)
@@ -177,6 +181,7 @@ DEPENDENCIES
   httparty
   jquery-rails
   json
+  omniauth
   pg
   rails (= 3.2.16)
   rspec

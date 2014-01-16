@@ -16,16 +16,17 @@ end
 travel_warning = HTTParty.get('http://travel.state.gov/_res/rss/TWs.xml')
 travel_warning['rss']['channel']['item'].each do |hash|
   country = hash["title"].split[0..-3].join(" ")
-  Warning.create(title: hash["title"], body: hash["description"], link: hash["link"], country: country)
+  tldr = hash["description"].split("<p>")[0..2].join(" ").gsub("</p>", " ").gsub("<br>", " ").gsub("&nbsp;", ".")
+  Warning.create(title: hash["title"], body: tldr, link: hash["link"], country: country)
 end
 
 # ============
 # COUNTRY INFO
 # ============
 
-all_countries["places"]["place"].each do |hash|
-  name = hash["name"].gsub(" ", "%20")
-  info = HTTParty.get("http://www.state.gov/api/v1?command=get_country_fact_sheets&fields=content_html&terms&terms=#{name}")
-  Info.create(body: info["country_fact_sheets"], country: hash["name"])
-end
+# all_countries["places"]["place"].each do |hash|
+#   name = hash["name"].gsub(" ", "%20")
+#   info = HTTParty.get("http://www.state.gov/api/v1?command=get_country_fact_sheets&fields=content_html&terms&terms=#{name}")
+#   Info.create(body: info["country_fact_sheets"], country: hash["name"])
+# end
 

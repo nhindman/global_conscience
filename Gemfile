@@ -14,6 +14,8 @@ gem 'devise'
 gem 'twitter'
 gem 'httparty'
 gem 'json'
+gem 'omniauth'
+
 
 # require 'twitter/geo_results'
 # require 'twitter/place'
