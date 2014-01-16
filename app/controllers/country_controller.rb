@@ -17,14 +17,19 @@ class CountryController < ApplicationController
     else
       woeid = Country.find_by_name(country).woeid
       warning = Warning.find_by_country(country)
+      @statement = "Showing top global trends"
       begin 
         # at WOEID
         woeid_trend = t.establish_connection.trends_place(woeid)
         @woeid_trends = woeid_trend.attrs[:trends]
+        @statement = "Showing top trends for #{country}"
       rescue Twitter::Error::NotFound
         # closest to WOEID
+
         coords = Geocoder.search(country)[0].data["geometry"]["location"]
         location = t.establish_connection.trends_closest({lat: coords["lat"], long: coords["lng"]})
+        @statement = "For political reasons or otherwise, #{country} does not have Twitter. Showing regional trends from the closest findable location, #{location[0].attrs[:name]}, #{location[0].attrs[:country]}"
+
         coords_woeid = location[0].attrs[:woeid]
         coords_trend = t.establish_connection.trends_place(coords_woeid)
         @woeid_trends = coords_trend.attrs[:trends]
