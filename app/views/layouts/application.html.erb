@@ -13,6 +13,8 @@
 <p class="notice"><%= notice %></p>
 <p class="alert"><%= alert %></p>
 
+
+<h1>search tweets by trouble spots</h1>
 <form action="/country/display" method="get" >
   <select>
   <% @danger_countries.each do |country| %>
@@ -22,14 +24,17 @@
   <button>search</button>
 </form>
 
+<h1>search tweets by country</h1>
 <form action="/country/tweets" method="get" >
   <select>
   <% @countries.each do |country| %>
+  <li><%= country.name %></li>
+  <li><%= country.woeid %></li>
     <option value='<%= country.woeid %>'><%= country.name %></option>
     <% end %>
-    </select>
-    <button>search</button>
-    </form>
+  </select>
+  <button>search</button>
+</form>
 
 <%= yield %>
 

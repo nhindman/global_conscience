@@ -15,6 +15,7 @@ gem 'twitter'
 gem 'httparty'
 gem 'json'
 gem 'omniauth'
+gem 'omniauth-facebook'
 
 
 # require 'twitter/geo_results'
