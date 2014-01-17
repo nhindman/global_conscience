@@ -12,6 +12,11 @@ class PostsController < ApplicationController
 
   def edit
     comment_id = params[:comment_id]
+    country = comment_id.country
+    warning = Warning.find_by_country(country)
+    @warning_title = warning.title
+    @warning_body = warning.body
+    @warning_date = warning.date
     @edit_comment = Comment.find(comment_id)
   end
 
@@ -21,8 +26,9 @@ class PostsController < ApplicationController
     edit_comment.title = params[:title]
     edit_comment.body = params[:body]
     edit_comment.save!
-    link = edit_comment.country.gsub(" ", "%20")
-    redirect_to "/country/display?country=#{link}"
+    redirect_to "home/index"
+    # link = edit_comment.country.gsub(" ", "%20")
+    # redirect_to "/country/display?country=#{link}"
   end
 
   def delete

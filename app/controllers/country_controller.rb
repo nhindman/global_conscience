@@ -25,7 +25,6 @@ class CountryController < ApplicationController
       end
     @warning_title = warning.title
     @warning_body = warning.body
-    @warning_link = warning.link
     @warning_date = warning.date
     @warning_id = warning.id
     end
