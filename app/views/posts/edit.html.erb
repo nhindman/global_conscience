@@ -2,9 +2,6 @@
   <form action="/posts/update/" method="POST" >
     <input type="hidden" name="authenticity_token" value="<%= form_authenticity_token %>" />
     <input type="hidden" name="comment_id" value="<%= @edit_comment.id %>" />
-
-    <input type="hidden" name="country" value="<%= @country %>" />
-
     <input type="text" name="title" placeholder="<%= @edit_comment.title %>" /> <br>
     <textarea name="body"><%= @edit_comment.body %>
     </textarea> <br>

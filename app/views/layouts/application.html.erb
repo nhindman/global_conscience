@@ -2,44 +2,54 @@
 <html>
 <head>
   <title>GlobalConscience</title>
+  <link href='http://fonts.googleapis.com/css?family=Kite+One' rel='stylesheet' type='text/css'>
+<link href='http://fonts.googleapis.com/css?family=Alegreya+Sans+SC:900' rel='stylesheet' type='text/css'>
   <%= stylesheet_link_tag    "application", :media => "all" %>
   <%= javascript_include_tag "application" %>
   <%= csrf_meta_tags %>
 </head>
 <body>
 <div class="container">
-<div class="twelve columns offset-by-two">
-  <% if user_signed_in? %>
-    <%= link_to "Sign Out", destroy_user_session_path %>
-  <% else %>
-    <%= link_to "Sign in with Facebook", user_omniauth_authorize_path(:facebook) %>
-  <% end %>
+  <div class="fourteen columns offset-by-one">
 
-  <p class="notice"><%= notice %></p>
-  <p class="alert"><%= alert %></p>
-
-  <div class="four columns"
-  <h1>search tweets by trouble spots</h1>
-  <form action="/country/display" method="get" >
-    <select name="country" class="submit">
-    <% @danger_countries.each do |country| %>
-      <option value="<%= country.country %>"><%= country.country %></option>
+    <% if user_signed_in? %>
+      <%= link_to "Sign Out", destroy_user_session_path %>
+    <% else %>
+      <%= link_to "Sign in with Facebook", user_omniauth_authorize_path(:facebook) %>
     <% end %>
-      </select>
-    <button>search</button>
-  </form>
 
-  <h1>search tweets by country</h1>
-  <form action="/country/tweet" method="get" >
-    <select name="woeid" value="submit">
-    <% @countries.each do |country| %>
-      <option value='<%= country.woeid %>'><%= country.name %></option>
-      <% end %>
-    </select>
-    <button>search</button>
-  </form>
+    <p class="notice"><%= notice %></p>
+    <p class="alert"><%= alert %></p>
 
-<%= yield %>
+    <div class="seven columns omega">
+      <h3>Countries</h3>
+      <form action="/country/tweet" method="get" >
+        <select name="woeid" value="submit">
+        <% @countries.each do |country| %>
+          <option value='<%= country.woeid %>'><%= country.name %></option>
+          <% end %>
+        </select>
+        <button>search</button>
+      </form>
+    </div>
 
+    <div class="seven columns alpha"> 
+      <h3>Global Hotspots</h3>
+      <form action="/country/display" method="get" >
+        <select name="country" class="submit">
+        <% @danger_countries.each do |country| %>
+          <option value="<%= country.country %>"><%= country.country %></option>
+        <% end %>
+          </select>
+        <button>search</button>
+      </form>
+    </div>
+
+  </div>
+
+    
+  <%= yield %>
+
+</div>
 </body>
 </html>

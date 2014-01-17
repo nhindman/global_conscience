@@ -1,5 +1,5 @@
 class Comment < ActiveRecord::Base
-  attr_accessible :title, :body, :warnings_id, :username
+  attr_accessible :title, :body, :country, :username
 
   belongs_to :country
   belongs_to :warning
