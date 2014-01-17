@@ -5,3 +5,14 @@
 require File.expand_path('../config/application', __FILE__)
 
 GlobalConscience::Application.load_tasks
+
+
+namespace :db do
+  desc "drops, creates, migrates and seeds"
+  task :redo do
+    rake db:drop
+    rake db:create
+    rake db:migrate
+    rake db:seed
+  end
+end

@@ -15,24 +15,17 @@ ActiveRecord::Schema.define(:version => 20140116233653) do
 
   create_table "comments", :force => true do |t|
     t.text     "body"
-    t.integer  "warning_id"
+    t.integer  "warnings_id"
     t.string   "username"
     t.string   "title"
-    t.datetime "created_at", :null => false
-    t.datetime "updated_at", :null => false
+    t.datetime "created_at",  :null => false
+    t.datetime "updated_at",  :null => false
   end
 
   create_table "countries", :force => true do |t|
     t.integer  "user_id"
     t.string   "name"
     t.integer  "woeid"
-    t.datetime "created_at", :null => false
-    t.datetime "updated_at", :null => false
-  end
-
-  create_table "infos", :force => true do |t|
-    t.text     "body"
-    t.string   "country"
     t.datetime "created_at", :null => false
     t.datetime "updated_at", :null => false
   end

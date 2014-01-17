@@ -8,7 +8,8 @@ class User < ActiveRecord::Base
   attr_accessible :email, :password, :password_confirmation, :remember_me, :name
   # attr_accessible :title, :body
 
-  has_many :comments, through: :country
+  has_many :comments
+  has_many :warnings, through: :comment
   
   devise :omniauthable, :omniauth_providers => [:facebook]
 

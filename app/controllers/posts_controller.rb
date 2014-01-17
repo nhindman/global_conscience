@@ -33,7 +33,8 @@ class PostsController < ApplicationController
 
   # def user
   #   username = params[:username]
-  #   
+  #   user_comments = Comment.find_by_username(username)
+  #   @comments = user_comments.all
   # end
 
 end
