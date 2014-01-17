@@ -30,7 +30,7 @@ class PostsController < ApplicationController
     comment_id = params[:comment_id]
     link = Comment.find(comment_id).country.gsub(" ", "%20")
     delete = comment.find(comment_id)
-    Comment.delete(delete)!
+    Comment.delete(delete)
     redirect_to "/country/display?country=#{link}"
   end
 
