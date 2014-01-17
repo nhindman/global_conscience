@@ -28,9 +28,9 @@ class PostsController < ApplicationController
 
   def delete
     comment_id = params[:comment_id]
-    link = comment.find(comment_id).country.gsub(" ", "%20")
+    link = Comment.find(comment_id).country.gsub(" ", "%20")
     delete = comment.find(comment_id)
-    Comment.delete(delete)
+    Comment.delete(delete)!
     redirect_to "/country/display?country=#{link}"
   end
 
