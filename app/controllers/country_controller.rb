@@ -43,7 +43,7 @@ class CountryController < ApplicationController
     @warning_id = warning.id
     end
 
-    @posts = Comment.all
+    @comments = Comment.all
 
   end
 

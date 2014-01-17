@@ -9,6 +9,10 @@ GlobalConscience::Application.routes.draw do
   get 'country/tweet/' => 'country#tweet'
 
   post 'posts/create' => 'posts#create'
+
+  get 'posts/edit' => 'posts#create'
+
+  get 'posts/delete' => 'posts#delete'
   
   root :to => "home#index"
 
