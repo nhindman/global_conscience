@@ -13,6 +13,8 @@ GlobalConscience::Application.routes.draw do
   get 'posts/edit' => 'posts#edit'
 
   get 'posts/delete' => 'posts#delete'
+
+  # get 'posts/user/' => 'posts#user'
   
   root :to => "home#index"
 

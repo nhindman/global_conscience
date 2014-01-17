@@ -33,7 +33,7 @@
   <% @comments.each do |comment| %>
     <h1><%= comment.title %></h1>
     <p><%= comment.body %></p>
-    <!-- <p>by <a href="/posts/user/all<%=  %>"><%= post.user.name %></a></p> -->
+    <!-- <p>by <a href="/posts/user/<%= current_user.name %>"><%= post.user.name %></a></p> -->
     <p>created <%= comment.created_at %></p>
 
 
@@ -54,7 +54,7 @@
       <p></p>
     <% end %>
   <% end %>
-  
+
 <!-- login -->
 <% else %>
   <%= link_to "Sign in with Facebook to leave comments", user_omniauth_authorize_path(:facebook) %>
