@@ -1,3 +1,8 @@
-<% @tweets.each do |tweet| %>
-<a href="<%= tweet[:url]%>" target="_blank"><%= tweet[:name] %></a><br>
+<% if @woeid_trends == "oops" %>
+  <h1><%= @statement %></h1>
+<% else %>
+  <h2><%= @statement %></h2>
+  <% @woeid_trends.each do |tweet| %>
+    <a href="<%= tweet[:url]%>" target="_blank"><%= tweet[:name] %></a><br>
+  <% end %>
 <% end %>

@@ -30,6 +30,9 @@ class CountryController < ApplicationController
         # coords_woeid = location[0].attrs[:woeid]
         # coords_trend = Tweet.woeid_trends(coords_woeid)
         # @woeid_trends = coords_trend.attrs[:trends]
+      rescue Twitter::Error::TooManyRequests
+        @woeid_trends = "oops"
+        @statement = "Too many requests. Please try again later."
       end
     @warning_title = warning.title
     @warning_body = warning.body
@@ -37,9 +40,7 @@ class CountryController < ApplicationController
     @warning_date = warning.date
     end
 
-    
-
-
+    @posts = Comment.all
 
   end
 
@@ -50,9 +51,12 @@ class CountryController < ApplicationController
     begin
       @woeid_trends = Tweet.woeid_trends(woeid)
       @statement = "Showing top trends for #{@country}"
-    rescue
+    rescue Twitter::Error::NotFound
       @woeid_trends = Tweet.coords_trends(country)
       @statement = "For political reasons or otherwise, #{@country} does not have Twitter. Showing regional trends from the closest available location, #{location[0].attrs[:name]}, #{location[0].attrs[:country]}"
+    rescue Twitter::Error::TooManyRequests
+      @woeid_trends = "oops"
+      @statement = "Too many requests. Please try again later."
     end
   end
 end
