@@ -16,7 +16,7 @@ class PostsController < ApplicationController
   end
 
   def update
-    comment_id = params[:id]
+    comment_id = params[:comment_id]
     country = params[:country].gsub(" ", "%20")
     edit_comment = Comment.find(comment_id)
     edit_comment.title = params[:title]
