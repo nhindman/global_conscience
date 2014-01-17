@@ -26,7 +26,6 @@
   <!-- blog section -->
   <% if user_signed_in? %>
     <form action="/posts/create/" method="POST" >
-      <input type="hidden" name="warning_id" value="<%= @warning_id %>"/>
       <input type="hidden" name="country" value="<%= @country %>">
       <input type="text" name="title" placeholder="Title" /><br>
       <textarea name="body" placeholder="comment"></textarea><br>
