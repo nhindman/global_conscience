@@ -28,7 +28,7 @@ class PostsController < ApplicationController
 
   def delete
     comment_id = params[:comment_id]
-    delete = comment.find(comment_id)
+    delete = Comment.find(comment_id)
     Comment.delete(delete)
     redirect_to "/home/index"
   end
