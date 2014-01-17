@@ -4,8 +4,7 @@ class CountryController < ApplicationController
     @country = params[:country]
 
     if @country == ""
-      global = t.establish_connection.trends_place(1)
-      @woeid_trends = global.attrs[:trends]
+      @woeid_trends = Tweet.woeid_trends(1)
       warning = Warning.find_by_id(25)
       @statement = "Showing top global trends"
       @country = "Global"
