@@ -40,14 +40,15 @@
   <!-- edit/delete -->
     <% if current_user.name == comment.username %>
     <!-- delete -->
-      <form action="/posts/delete/<%= comment.id %>" method="POST" >
+      <form action="/posts/delete" method="POST" >
         <input type="hidden" name="authenticity_token" value="<%= form_authenticity_token %>" />
         <input type="hidden" name="country" value="<%= @country %>">
+        <input type="hidden" name="comment_id" value="<%= comment.id %>">
         <button>delete</button>
       </form>
     <!-- edit -->
-      <form action="/posts/edit/<%= comment.id %>" method="get">
-        <input type="hidden" name="country" value="<%= @country %>">
+      <form action="/posts/edit" method="get">
+        <input type="hidden" name="comment_id" value="<%= comment.id %>">
         <button>edit</button>
       </form>
     <% else %>

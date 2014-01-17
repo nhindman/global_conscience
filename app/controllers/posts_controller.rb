@@ -10,7 +10,8 @@ class PostsController < ApplicationController
   end
 
   def edit
-    comment_id = params[:id]
+    comment_id = params[:comment_id]
+    @country = params[:country]
     @edit_comment = Comment.find(comment_id)
   end
 
@@ -25,16 +26,10 @@ class PostsController < ApplicationController
   end
 
   def delete
-    comment_id = params[:id]
+    comment_id = params[:comment_id]
     country = params[:country].gsub(" ", "%20")
     Comment.delete(comment_id)
     redirect_to "/country/display?country=#{country}"
   end
-
-  # def user
-  #   username = params[:username]
-  #   user_comments = Comment.find_by_username(username)
-  #   @comments = user_comments.all
-  # end
 
 end
