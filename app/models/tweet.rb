@@ -18,11 +18,12 @@ class Tweet < ActiveRecord::Base
   end
 
   def self.coords_trends(country)
-    coords = Geocoder.search(country.name)[0].data["geometry"]["location"]
+    coords = Geocoder.search(country)[0].data["geometry"]["location"]
     location = Tweet.establish_connection.trends_closest({lat: coords["lat"], long: coords["lng"]})
+    statement = "For political reasons or otherwise, #{@country} does not have Twitter. Showing regional trends from the closest available location, #{location[0].attrs[:name]}, #{location[0].attrs[:country]}"
     coords_woeid = location[0].attrs[:woeid]
     woeid_trends = Tweet.woeid_trends(coords_woeid)
-    return woeid_trends
+    return [woeid_trends, statement]
   end
 
 
