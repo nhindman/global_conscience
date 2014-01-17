@@ -21,7 +21,7 @@ class PostsController < ApplicationController
     edit_comment.title = params[:title]
     edit_comment.body = params[:body]
     edit_comment.save!
-    redirect_to "home/index"
+    redirect_to "/home/index"
     # link = edit_comment.country.gsub(" ", "%20")
     # redirect_to "/country/display?country=#{link}"
   end
