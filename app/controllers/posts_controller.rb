@@ -32,8 +32,8 @@ class PostsController < ApplicationController
   end
 
   # def user
-  #   params
-
+  #   username = params[:username]
+  #   
   # end
 
 end

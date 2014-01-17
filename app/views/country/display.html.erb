@@ -33,7 +33,7 @@
   <% @comments.each do |comment| %>
     <h1><%= comment.title %></h1>
     <p><%= comment.body %></p>
-    <!-- <p>by <a href="/posts/user/<%= current_user.name %>"><%= post.user.name %></a></p> -->
+    <!-- <p>by <a href="/posts/user/<%= comment.username %>"><%= comment.username %></a></p> -->
     <p>created <%= comment.created_at %></p>
 
 
