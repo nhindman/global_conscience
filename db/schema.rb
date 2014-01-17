@@ -69,6 +69,7 @@ ActiveRecord::Schema.define(:version => 20140116233653) do
     t.text     "body"
     t.string   "link"
     t.string   "country"
+    t.text     "date"
     t.datetime "created_at", :null => false
     t.datetime "updated_at", :null => false
   end

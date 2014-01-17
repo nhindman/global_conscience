@@ -5,6 +5,7 @@ class CreateWarnings < ActiveRecord::Migration
       t.text :body
       t.string :link
       t.string :country
+      t.text :date
 
       t.timestamps
     end

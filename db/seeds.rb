@@ -16,7 +16,7 @@ travel_warning = HTTParty.get('http://travel.state.gov/_res/rss/TWs.xml')
 travel_warning['rss']['channel']['item'].each do |hash|
   country = hash["title"].split[0..-3].join(" ")
   tldr = hash["description"].split("<p>")[0..2].join(" ").gsub("</p>", " ").gsub("<br>", " ").gsub("&nbsp;", ".").gsub("&#8217;", "")
-  Warning.create(title: hash["title"], body: tldr, link: hash["link"], country: country, date: hash["pubDate"], map: country
+  Warning.create(title: hash["title"], body: tldr, link: hash["link"], country: country, date: hash["pubDate"])
 end
 
 
