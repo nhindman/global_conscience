@@ -2,14 +2,6 @@
   <img src="assets/<%= edit_comment.country %>.png" class="maps">
 </div><br><br>
 
-<div class="fourteen columns offset-by-one">
-  <!-- info -->
-  <div class="twelve columns offset-by-one">
-    <h2><%= @warning_title %></h2><br>
-    <p><%= @warning_date %></p>
-    <p><%= @warning_body %></p>
-  </div>
-
   <div class="eight columns offset-by-three">
     <form action="/posts/update/" method="POST" >
       <input type="hidden" name="authenticity_token" value="<%= form_authenticity_token %>" />
