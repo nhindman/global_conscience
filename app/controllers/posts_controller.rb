@@ -4,7 +4,7 @@ class PostsController < ApplicationController
     title = params[:title]
     body = params[:body]
     country = params[:country]
-    link= country.gsub(" ", "%20")
+    link = country.gsub(" ", "%20")
     Comment.create(title: title, body: body, country: country, username: current_user.name)
     redirect_to "/country/display?country=#{link}"
   end
