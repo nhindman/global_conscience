@@ -10,17 +10,17 @@ class PostsController < ApplicationController
   end
 
   def edit
-    id = params[:id]
-    @edit_comment = Comment.find(id)
+    comment_id = params[:id]
+    @edit_comment = Comment.find(comment_id)
   end
 
   def update
-    id = params[:id]
+    comment_id = params[:id]
     country = params[:country].gsub(" ", "%20")
-    edit_comment = Comment.find(id)
-    edit_post.title = params[:title]
-    edit_post.body = params[:body]
-    edit_post.save!
+    edit_comment = Comment.find(comment_id)
+    edit_comment.title = params[:title]
+    edit_comment.body = params[:body]
+    edit_comment.save!
     redirect_to "country/display?country=#{country}"
   end
 
