@@ -3,7 +3,8 @@ class PostsController < ApplicationController
   def create do
     title = params[:title]
     body = params[:body]
-    Post.create(title: title, body: body, name: User.name)
+    id = params[]
+    Comment.create(title: title, body: body, warning_id: 5, user_id: User.id)
     redirect_to 'country/display'
   end
 
