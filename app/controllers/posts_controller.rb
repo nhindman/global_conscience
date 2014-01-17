@@ -12,6 +12,7 @@ class PostsController < ApplicationController
 
   def edit
     comment_id = params[:comment_id]
+  binding.pry
     @edit_comment = Comment.find(comment_id)
     country =@edit_comment.country
     warning = Warning.find_by_country(country)
