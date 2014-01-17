@@ -32,7 +32,7 @@
 
 
   <!-- edit/delete -->
-    <% if User.name == comment.username %>
+    <% if current_user.name == comment.username %>
       <form action="/posts/delete/<%= comment.id %>" method="POST" >
         <input type="hidden" name="country" value="<%= @country %>">
         <button>delete</button>
