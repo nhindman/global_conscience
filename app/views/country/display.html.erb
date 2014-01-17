@@ -7,3 +7,15 @@
 <% @woeid_trends.each do |tweet| %>
 <a href="<%= tweet[:url]%>" target="_blank"><%= tweet[:name] %></a><br>
 <% end %>
+
+<% if user_signed_in? %>
+
+  <form action="/posts/create" method="POST" <%= token_tag :authenticity_token %>>
+    <input type="text" name="title" placeholder="Title" /><br>
+    <textarea name="body" placeholder="comment"></textarea><br>
+    <input type="submit" value="post" class="submit" />
+  </form>
+
+<% else %>
+  <%= link_to "Sign in with Facebook to leave comments", user_omniauth_authorize_path(:facebook) %>
+<% end %>
