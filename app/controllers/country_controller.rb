@@ -4,7 +4,6 @@ class CountryController < ApplicationController
     @country = params[:country]
 
     if @country == ""
-      # GLOBAL
       global = t.establish_connection.trends_place(1)
       @woeid_trends = global.attrs[:trends]
       warning = Warning.find_by_id(25)
@@ -14,24 +13,12 @@ class CountryController < ApplicationController
       woeid = Country.find_by_name(@country).woeid
       warning = Warning.find_by_country(@country)
       begin 
-        # at WOEID, takes woeid as params
         @woeid_trends = Tweet.woeid_trends(woeid)
-        # woeid_trend = Tweet.woeid_trends(woeid)
-        # @woeid_trends = woeid_trend.attrs[:trends]
         @statement = "Showing top trends for #{@country}"
       rescue Twitter::Error::NotFound
         trend_statement = Tweet.coords_trends(@country)
         @woeid_trends = trend_statement[0]
         @statement = trend_statement[1]
-
-        # closest to WOEID, takes country as params
-
-        # coords = Geocoder.search(@country)[0].data["geometry"]["location"]
-        # location = t.establish_connection.trends_closest({lat: coords["lat"], long: coords["lng"]})
-
-        # coords_woeid = location[0].attrs[:woeid]
-        # coords_trend = Tweet.woeid_trends(coords_woeid)
-        # @woeid_trends = coords_trend.attrs[:trends]
       rescue Twitter::Error::TooManyRequests
         @woeid_trends = "oops"
         @statement = "Too many requests. Please try again later."

@@ -10,7 +10,7 @@ GlobalConscience::Application.routes.draw do
 
   post 'posts/create' => 'posts#create'
 
-  get 'posts/edit' => 'posts#create'
+  get 'posts/edit' => 'posts#edit'
 
   get 'posts/delete' => 'posts#delete'
   

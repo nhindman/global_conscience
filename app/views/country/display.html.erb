@@ -18,6 +18,7 @@
 <% if user_signed_in? %>
   <form action="/posts/create/" method="POST" <%= token_tag :authenticity_token %>>
     <input type="hidden" name="warning_id" value="<%= @warning_id %>"/>
+    <input type="hidden" name="country" value="<%= @country %>">
     <input type="text" name="title" placeholder="Title" /><br>
     <textarea name="body" placeholder="comment"></textarea><br>
     <input type="submit" value="post" class="submit" />
@@ -31,11 +32,13 @@
 
 
   <!-- edit/delete -->
-    <% if User.id == comment.user_id %>
+    <% if User.name == comment.username %>
       <form action="/posts/delete/<%= comment.id %>" method="POST" >
+        <input type="hidden" name="country" value="<%= @country %>">
         <button>delete</button>
       </form>
       <form action="/posts/edit/<%= comment.id %>" method="get">
+        <input type="hidden" name="country" value="<%= @country %>">
         <button>edit</button>
       </form>
     <% else %>
