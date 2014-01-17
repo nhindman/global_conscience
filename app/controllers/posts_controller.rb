@@ -1,6 +1,6 @@
 class PostsController < ApplicationController
 
-  def create do
+  def create
     title = params[:title]
     body = params[:body]
     warning_id = params[:warning_id]
