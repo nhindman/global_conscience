@@ -46,13 +46,13 @@ class CountryController < ApplicationController
 
   def tweet
     woeid = params[:woeid]
-    country = Country.find_by_woeid(woeid)
+    @country = Country.find_by_woeid(woeid)
 
     begin
       @woeid_trends = Tweet.woeid_trends(woeid)
       @statement = "Showing top trends for #{@country}"
     rescue Twitter::Error::NotFound
-      @woeid_trends = Tweet.coords_trends(country)
+      @woeid_trends = Tweet.coords_trends(@country)
       @statement = "For political reasons or otherwise, #{@country} does not have Twitter. Showing regional trends from the closest available location, #{location[0].attrs[:name]}, #{location[0].attrs[:country]}"
     rescue Twitter::Error::TooManyRequests
       @woeid_trends = "oops"
