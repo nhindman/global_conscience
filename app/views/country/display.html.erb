@@ -1,7 +1,14 @@
+<!-- map -->
 <img src="/assets/<%= @country %>.png">
 
-<p><%= @warning_title %></p><br>
-<p><%= @warning_body %></p>
+<!-- info -->
+<div>
+  <p><%= @warning_title %></p><br>
+  <p><%= @warning_date %></p>
+  <p><%= @warning_body %></p>
+</div>
+
+<!-- top tweets -->
 <% if @woeid_trends == "oops" %>
   <h1><%= @statement %></h1>
 <% else %>
@@ -11,18 +18,17 @@
   <% end %>
 <% end %>
 
-
-
-
 <!-- blog section -->
 <% if user_signed_in? %>
-  <form action="/posts/create/" method="POST" <%= token_tag :authenticity_token %>>
+  <form action="/posts/create/" method="POST" >
     <input type="hidden" name="warning_id" value="<%= @warning_id %>"/>
     <input type="hidden" name="country" value="<%= @country %>">
     <input type="text" name="title" placeholder="Title" /><br>
     <textarea name="body" placeholder="comment"></textarea><br>
     <input type="submit" value="post" class="submit" />
+    <input name="authenticity_token" type="hidden" value="<%= form_authenticity_token %>" />
   </form>
+
 <!-- display all -->
   <% @comments.each do |comment| %>
     <h1><%= comment.title %></h1>
@@ -33,10 +39,13 @@
 
   <!-- edit/delete -->
     <% if current_user.name == comment.username %>
+    <!-- delete -->
       <form action="/posts/delete/<%= comment.id %>" method="POST" >
+        <input type="hidden" name="authenticity_token" value="<%= form_authenticity_token %>" />
         <input type="hidden" name="country" value="<%= @country %>">
         <button>delete</button>
       </form>
+    <!-- edit -->
       <form action="/posts/edit/<%= comment.id %>" method="get">
         <input type="hidden" name="country" value="<%= @country %>">
         <button>edit</button>
@@ -45,6 +54,7 @@
       <p></p>
     <% end %>
   <% end %>
+  
 <!-- login -->
 <% else %>
   <%= link_to "Sign in with Facebook to leave comments", user_omniauth_authorize_path(:facebook) %>
