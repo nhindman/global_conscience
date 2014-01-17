@@ -12,15 +12,33 @@
 <% end %>
 
 
-<% if user_signed_in? %>
 
+
+<!-- blog section -->
+<% if user_signed_in? %>
   <form action="/posts/create/" method="POST" <%= token_tag :authenticity_token %>>
     <input type="hidden" name="warning_id" value="<%= @warning_id %>"/>
     <input type="text" name="title" placeholder="Title" /><br>
     <textarea name="body" placeholder="comment"></textarea><br>
     <input type="submit" value="post" class="submit" />
   </form>
+<!-- display all -->
+  <% @posts.each do |post| %>
+    <h1><%= post.title %></h1>
+    <p><%= post.body %></p>
+    <!-- <p>by <a href="/posts/user/all<%=  %>"><%= post.user.name %></a></p> -->
+    <p>created <%= post.created_at %></p>
 
+
+  <!-- edit/delete -->
+    <form action="/posts/delete/<%= post.id %>" method="POST" >
+      <button>delete</button>
+    </form>
+    <form action="/posts/edit/<%= post.id %>" method="get">
+      <button>edit</button>
+    </form>
+  <% end %>
+<!-- login -->
 <% else %>
   <%= link_to "Sign in with Facebook to leave comments", user_omniauth_authorize_path(:facebook) %>
 <% end %>
