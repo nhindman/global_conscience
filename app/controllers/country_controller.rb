@@ -8,6 +8,13 @@ class CountryController < ApplicationController
       warning = Warning.find_by_id(25)
       @statement = "Showing top global trends"
       @country = "Global"
+    elsif @country == "Israel, The West Bank and Gaza"
+      woeid = Country.find_by_name("Israel").woeid
+      warning = Warning.find_by_id(37)
+      trend_statement = Tweet.coords_trends(@country)
+      @woeid_trends = trend_statement[0]
+      @statement = trend_statement[1]
+      @country = "Israel"
     else
       woeid = Country.find_by_name(@country).woeid
       warning = Warning.find_by_country(@country)
